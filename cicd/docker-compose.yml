@@ -1,0 +1,14 @@
+version: 3.14
+services:
+
+  image: jenkins/jenkins
+  container_name: jenkins-sever
+
+  EXPOSE: 8080:8080
+
+  image: openjdk
+  FROM 
+WORKDIR /app
+COPY demo.java /app
+RUN javac demo.java
+CMD [ "java" , "demo"]
