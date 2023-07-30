@@ -1,0 +1,29 @@
+version: '3.9'  # You can adjust the version as needed
+
+services:
+  java_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: java_app
+    networks:
+      - demo_network
+
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - jenkins_data:/var/jenkins_home
+    networks:
+      - demo_network
+
+networks:
+  demo_network:  # Create a custom network for communication between services
+    driver: bridge
+
+volumes:
+  jenkins_data:  # Create a volume to persist Jenkins data
