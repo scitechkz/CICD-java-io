@@ -9,10 +9,15 @@ pipeline {
       sh echo("pushed to github")
     }
 
-    stage("deploy to docker hub")
+    stage("run the java code")
+    {
+        sh echo("run java program ")
+    }
+stage("deploy to docker hub")
     {
         sh echo("successfully deployed")
     }
+
 
 }
 
